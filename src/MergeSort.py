@@ -21,12 +21,14 @@ def merge(left, right):
 		else:
 			data.append(right[rightPos])
 			rightPos += 1
-	while leftPos < len(left):
-		data.append(left[leftPos])
-		leftPos += 1
-	while rightPos < len(right):
-		data.append(right[rightPos])
-		rightPos += 1
+	data.extend(left[leftPos:])
+	data.extend(right[rightPos:])
 	return data
 
-print(mergeSort([3, 5, 2, 1, 72, -23, 89, 101, -11]))
+if __name__ == "__main__":
+	data = [3, 5, 2, 1, 72, -23, 89, 101, -11]
+	sorted = mergeSort(data)
+	print(data)
+	print(sorted)
+	data.sort()
+	assert sorted == data
